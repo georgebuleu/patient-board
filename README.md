@@ -7,4 +7,4 @@ Patients Board backend project for team 1
 [Figma app](https://www.figma.com/files/project/85287217/Team-project?fuid=1227273931196471268).  
 
 ## Board
-[Treello board](https://trello.com/b/NfHY4ZKY/task-boarf).
+[Trello board](https://trello.com/b/NfHY4ZKY/task-boarf).
