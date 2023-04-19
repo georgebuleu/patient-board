@@ -9,14 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>SpringApp</module>
+        <module>patient-app</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     </properties>
 
     <dependencyManagement>
@@ -32,7 +31,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-dependencies</artifactId>
             <version>3.0.4</version>
+            <type>pom</type>
             <scope>import</scope>
+
             </dependency>
 
         </dependencies>
