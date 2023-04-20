@@ -10,7 +10,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomID;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospitalSpecialityID")
-    private HospitalSpeciality hospitalSpecialityFKID;
+    @JoinColumn(name = "hospitalspecialityID")
+    private HospitalSpeciality hospitalspecialityID;
 
 }

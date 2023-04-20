@@ -7,9 +7,8 @@ import jakarta.persistence.*;
 public class HospitalSpeciality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hospitalSpecialityID;
+    private Long hospitalspecialityID;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalID")
-    private Hospital hospitalFKID;
-    private Long specialityFKID;
+    private Hospital hospitalID;
 }
