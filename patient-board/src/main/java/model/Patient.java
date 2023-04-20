@@ -3,9 +3,8 @@ package model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "Patient")
 public class Patient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientID;
@@ -15,7 +14,7 @@ public class Patient {
     private Integer phone;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomID")
-    private Room roomFKID;
+    private Room roomID;
 
     public Patient() {
     }
