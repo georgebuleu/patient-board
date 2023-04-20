@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>patient-app</module>
-        <module>logic</module>
+        <module>patient-board-app</module>
+        <module>patient-board</module>
     </modules>
 
     <properties>
