@@ -11,4 +11,6 @@ public class HospitalSpeciality {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalID")
     private Hospital hospitalID;
+
+
 }
