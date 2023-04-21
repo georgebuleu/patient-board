@@ -1,4 +1,4 @@
-package repo;
+package repository;
 
 import model.Patient;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface PatientRepo extends JpaRepository<Patient, Long> {
+public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    @Query("SELECT p FROM Patient p WHERE p.roomID.hospitalspecialityID.hospitalID.hospitalID = :hospitalId")
+    @Query("SELECT p FROM Patient p WHERE p.room.hospitalspeciality.hospital.hospitalID = :hospitalId")
     List<Patient> findPatientsByHospitalId(@Param("hospitalId") Long hospitalId);
 }

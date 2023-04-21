@@ -11,7 +11,7 @@ public class Room {
     private int capacity;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalspecialityID")
-    private HospitalSpeciality hospitalspecialityID;
+    private HospitalSpeciality hospitalspeciality;
 
     public Long getroomID() {
         return roomID;

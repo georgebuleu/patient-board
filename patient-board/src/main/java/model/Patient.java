@@ -14,7 +14,7 @@ public class Patient {
     private Integer phone;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomID")
-    private Room roomID;
+    private Room room;
 
     public Patient() {
     }
