@@ -6,23 +6,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import repo.PatientRepo;
+import repository.PatientRepository;
 import model.Patient;
 
 import java.util.List;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "repo")
+@ComponentScan(basePackages = "repository")
 @EntityScan(basePackages = "model")
-@EnableJpaRepositories(basePackages = "repo")
+@EnableJpaRepositories(basePackages = "repository")
 public class Bootstrap implements CommandLineRunner {
 
     @Autowired
-    PatientRepo patientRepo;
+    PatientRepository patientRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        List<Patient> patients = patientRepo.findPatientsByHospitalId((long) 1);
+        List<Patient> patients = patientRepository.findPatientsByHospitalId((long) 1);
         for (Patient patient : patients) {
             System.out.println(patient.getName());
         }

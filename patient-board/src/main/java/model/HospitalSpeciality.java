@@ -10,7 +10,7 @@ public class HospitalSpeciality {
     private Long hospitalspecialityID;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospitalID")
-    private Hospital hospitalID;
+    private Hospital hospital;
 
 
 }
