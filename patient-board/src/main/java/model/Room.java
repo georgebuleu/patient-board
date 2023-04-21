@@ -7,13 +7,14 @@ import jakarta.persistence.*;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long roomID;
     private int capacity;
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public Long getId() {
-        return id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hospitalspecialityID")
+    private HospitalSpeciality hospitalspecialityID;
+
+    public Long getroomID() {
+        return roomID;
     }
 
     public int getCapacity() {
