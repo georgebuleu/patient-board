@@ -102,16 +102,4 @@ public class MedicalHistory {
         this.generalExam = generalExam;
     }
 
-    @Override
-    public String toString() {
-        return "MedicalHistory{" +
-                "medicalHistoryID=" + medicalHistoryID +
-                ", heredoColHistory='" + heredoColHistory + '\'' +
-                ", livingWorkingConditions='" + livingWorkingConditions + '\'' +
-                ", behaviours='" + behaviours + '\'' +
-                ", backgroundMeds='" + backgroundMeds + '\'' +
-                ", diseaseHistory='" + diseaseHistory + '\'' +
-                ", generalExam='" + generalExam + '\'' +
-                '}';
-    }
 }
