@@ -2,6 +2,8 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Patient")
 public class Patient {
@@ -15,7 +17,11 @@ public class Patient {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomID")
     private Room room;
-
+    @OneToOne
+    @JoinColumn(name = "medicalHistory_id")
+    MedicalHistory medicalHistory;
+    @OneToMany(mappedBy = "patient")
+    private List<Diagnosis> diagnosis;
     public Patient() {
     }
 

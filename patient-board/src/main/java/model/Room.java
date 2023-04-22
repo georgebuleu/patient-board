@@ -2,6 +2,8 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="room")
 public class Room {
@@ -9,10 +11,9 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomID;
     private int capacity;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospitalspecialityID")
-    private HospitalSpeciality hospitalspeciality;
-
+    @ManyToOne
+    @JoinColumn(name = "speciality_id")
+    private Speciality speciality;
     public Long getroomID() {
         return roomID;
     }

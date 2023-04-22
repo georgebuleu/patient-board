@@ -2,6 +2,8 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "hospital")
 public class Hospital {
@@ -16,6 +18,8 @@ public class Hospital {
     private String email;
     @Column(name = "phone")
     private String phone;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Speciality> speciality;
 
     public Hospital() {
     }
