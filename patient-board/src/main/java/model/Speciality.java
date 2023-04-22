@@ -1,19 +1,26 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "speciality")
 public class Speciality {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long specialityID;
+    @Nonnull
     private String name;
-    public void setId(Long id) {
-        this.id = id;
+
+    public Speciality() {
     }
 
-    public Long getId() {
-        return id;
+    public Speciality(String name) {
+        this.name = name;
+    }
+
+    public Long getSpecialityID() {
+        return specialityID;
     }
 
     public String getName() {
