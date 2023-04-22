@@ -1,7 +1,8 @@
 package model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "function")
@@ -9,7 +10,7 @@ public class Function {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long functionId;
-    @NotNull
+    @NonNull
     @Column(name = "name")
         private String name;
 
