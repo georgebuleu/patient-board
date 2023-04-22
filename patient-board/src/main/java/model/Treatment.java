@@ -1,7 +1,7 @@
 package model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
@@ -11,16 +11,16 @@ public class Treatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long treatmentId;
-    @NotNull
+    @NonNull
     @Column(name = "treatment")
     private String treatment;
-    @NotNull
+    @NonNull
     @Column(name = "evolution")
     private String evolution;
-    @NotNull
+    @NonNull
     @Column(name = "fromDate")
     private Date fromDate;
-    @NotNull
+    @NonNull
     @Column(name = "toDate")
     private Date toDate;
 
