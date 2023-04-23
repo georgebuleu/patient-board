@@ -1,5 +1,6 @@
 package model;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -9,8 +10,10 @@ import java.sql.Date;
 public class Surgery {
     @Id
     private Long id;
+    @Nonnull
     private String medicalTeam;
     private String details;
+    @Nonnull
     private Date date;
     public void setId(Long id) {
         this.id = id;
