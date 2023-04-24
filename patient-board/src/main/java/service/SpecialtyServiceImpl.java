@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class SpecialtyServiceImpl implements SpecialtyService{
 
-    @Autowired
     final private SpecialtyRepository specialtyRepository;
 
     public SpecialtyServiceImpl(SpecialtyRepository specialtyRepository) {
