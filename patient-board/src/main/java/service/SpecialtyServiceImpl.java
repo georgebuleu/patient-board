@@ -11,7 +11,11 @@ import java.util.List;
 public class SpecialtyServiceImpl implements SpecialtyService{
 
     @Autowired
-    SpecialtyRepository specialtyRepository;
+    final private SpecialtyRepository specialtyRepository;
+
+    public SpecialtyServiceImpl(SpecialtyRepository specialtyRepository) {
+        this.specialtyRepository = specialtyRepository;
+    }
 
     @Override
     public List<Speciality> getHospitalSpecialties(Long hospitalId) {
