@@ -17,9 +17,14 @@ public class PatientServiceImpl implements PatientService{
 
     @Override
     public List<Patient> getAllPatientsBySpecialty(Long specialtyId){
-        if(patientRepository.findAllPatientsBySpecialtyId(specialtyId).isEmpty()){
-            throw new NotFindPatientsBySpecialty("There are no patients for this specialization");
+        List<Patient> patients = patientRepository.findAllPatientsBySpecialtyId(specialtyId);
+        if(patients.isEmpty()){
+            try {
+                throw new NotFindPatientsBySpecialty();
+            } catch (NotFindPatientsBySpecialty e) {
+                throw new RuntimeException(e);
+            }
         }else
-        return patientRepository.findAllPatientsBySpecialtyId(specialtyId);
+        return patients;
     }
 }
