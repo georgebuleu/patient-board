@@ -13,4 +13,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Query("SELECT p FROM Patient p WHERE p.room.speciality.hospitalspeciality.hospitalID = :hospitalId")
     List<Patient> findPatientsByHospitalId(@Param("hospitalId") Long hospitalId);
+
+
+    List<Patient> findAllPatientsBySpecialtyId(@Param("specialtyId") Long specialtyId);
 }
