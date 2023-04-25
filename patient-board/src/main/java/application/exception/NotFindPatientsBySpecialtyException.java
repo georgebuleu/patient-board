@@ -1,4 +1,4 @@
-package exception;
+package application.exception;
 
 public class NotFindPatientsBySpecialtyException extends RuntimeException{
     public NotFindPatientsBySpecialtyException() {
