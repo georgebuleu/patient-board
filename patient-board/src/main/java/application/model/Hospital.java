@@ -9,7 +9,7 @@ import java.util.List;
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hospitalID;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "address")
@@ -18,7 +18,7 @@ public class Hospital {
     private String email;
     @Column(name = "phone")
     private String phone;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Speciality> speciality;
 
     public Hospital() {
@@ -31,8 +31,8 @@ public class Hospital {
         this.phone = phone;
     }
 
-    public Long getHospitalID() {
-        return hospitalID;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

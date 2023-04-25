@@ -1,8 +1,8 @@
 package application.model;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.sql.Date;
 
@@ -16,7 +16,7 @@ public class Surgery {
     private String details;
     @Nonnull
     private Date date;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<HospitalStaff> hospitalStaff;
 
     public void setId(Long id) {

@@ -14,7 +14,7 @@ public class Diagnosis {
     private String initialDiagnosis;
     private String diagnosisAfter72Hours;
     private String finalDiagnosis;
-    @OneToMany(mappedBy = "diagnosis")
+    @OneToMany(mappedBy = "diagnosis", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Treatment> treatments;
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -48,5 +48,21 @@ public class Diagnosis {
 
     public void setFinalDiagnosis(String finalDiagnosis) {
         this.finalDiagnosis = finalDiagnosis;
+    }
+
+    public List<Treatment> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(List<Treatment> treatments) {
+        this.treatments = treatments;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }

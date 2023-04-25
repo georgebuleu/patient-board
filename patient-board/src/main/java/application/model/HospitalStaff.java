@@ -32,7 +32,7 @@ public class HospitalStaff {
     @JoinColumn(name = "functionId")
     private Function function;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, cascade =  {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Surgery> surgeries;
 
     public HospitalStaff() {

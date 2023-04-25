@@ -20,7 +20,7 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "medicalHistory_id")
     MedicalHistory medicalHistory;
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diagnosis> diagnosis;
     public Patient() {
     }

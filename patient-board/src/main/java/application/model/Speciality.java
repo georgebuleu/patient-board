@@ -11,12 +11,12 @@ import java.util.List;
 public class Speciality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long specialityID;
+    private Long id;
     @Nonnull
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Hospital> hospitals;
-    @OneToMany(mappedBy = "speciality")
+    @OneToMany(mappedBy = "speciality", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Room> rooms;
 
     public Speciality() {
@@ -26,8 +26,8 @@ public class Speciality {
         this.name = name;
     }
 
-    public Long getSpecialityID() {
-        return specialityID;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
