@@ -1,6 +1,6 @@
 package service;
 
-import exception.NotFindPatientsBySpecialty;
+import exception.NotFindPatientsBySpecialtyException;
 import model.Patient;
 import org.springframework.stereotype.Service;
 import repository.PatientRepository;
@@ -19,11 +19,8 @@ public class PatientServiceImpl implements PatientService{
     public List<Patient> getAllPatientsBySpecialty(Long specialtyId){
         List<Patient> patients = patientRepository.findAllPatientsBySpecialtyId(specialtyId);
         if(patients.isEmpty()){
-            try {
-                throw new NotFindPatientsBySpecialty();
-            } catch (NotFindPatientsBySpecialty e) {
-                throw new RuntimeException(e);
-            }
+                throw new NotFindPatientsBySpecialtyException();
+
         }else
         return patients;
     }
