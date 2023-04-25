@@ -1,14 +1,14 @@
-package service;
+package application.service;
 
-import model.Speciality;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import application.model.Speciality;
 import org.springframework.stereotype.Service;
-import repository.SpecialtyRepository;
+import application.repository.SpecialtyRepository;
 
 import java.util.List;
 
 @Service
-public class SpecialtyServiceImpl implements SpecialtyService{
+public class SpecialtyServiceImpl implements SpecialtyService {
 
     final private SpecialtyRepository specialtyRepository;
 

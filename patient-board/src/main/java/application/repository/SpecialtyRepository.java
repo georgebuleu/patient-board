@@ -1,6 +1,7 @@
-package repository;
+package application.repository;
 
-import model.Speciality;
+
+import application.model.Speciality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

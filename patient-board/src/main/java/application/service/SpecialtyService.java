@@ -1,6 +1,6 @@
-package service;
+package application.service;
 
-import model.Speciality;
+import application.model.Speciality;
 
 import java.util.List;
 

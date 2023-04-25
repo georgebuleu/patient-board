@@ -1,4 +1,4 @@
-package model;
+package application.model;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;

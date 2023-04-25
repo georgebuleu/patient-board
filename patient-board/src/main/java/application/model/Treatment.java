@@ -1,4 +1,4 @@
-package model;
+package application.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;

@@ -1,6 +1,7 @@
-package model;
+package application.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 import javax.xml.crypto.Data;
 import java.util.Date;
