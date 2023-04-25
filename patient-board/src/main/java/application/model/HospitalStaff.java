@@ -32,13 +32,8 @@ public class HospitalStaff {
     @JoinColumn(name = "functionId")
     private Function function;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade =  {CascadeType.MERGE, CascadeType.PERSIST})
-    private List<Surgery> surgeries;
-
     public HospitalStaff() {
     }
-
-
 
     public Long getHospitalStaffId() {
         return hospitalStaffId;
@@ -88,11 +83,4 @@ public class HospitalStaff {
         this.function = function;
     }
 
-    public List<Surgery> getSurgeries() {
-        return surgeries;
-    }
-
-    public void setSurgeries(List<Surgery> surgeries) {
-        this.surgeries = surgeries;
-    }
 }

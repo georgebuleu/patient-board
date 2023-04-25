@@ -14,8 +14,6 @@ public class Speciality {
     private Long id;
     @Nonnull
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    private List<Hospital> hospitals;
     @OneToMany(mappedBy = "speciality", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Room> rooms;
 
@@ -40,14 +38,6 @@ public class Speciality {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Hospital> getHospitals() {
-        return hospitals;
-    }
-
-    public void setHospitals(List<Hospital> hospitals) {
-        this.hospitals = hospitals;
     }
 
     public List<Room> getRooms() {
