@@ -19,7 +19,7 @@ public class PatientServiceImpl implements PatientService{
     public List<Patient> getAllPatientsBySpecialty(Long specialtyId){
         if(patientRepository.findAllPatientsBySpecialtyId(specialtyId).isEmpty()){
             throw new NotFindPatientsBySpecialty("There are no patients for this specialization");
-        }
+        }else
         return patientRepository.findAllPatientsBySpecialtyId(specialtyId);
     }
 }
