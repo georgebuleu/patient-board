@@ -20,8 +20,7 @@ public class SpecialtyServiceImpl implements SpecialtyService {
 
     @Override
     public List<Speciality> getHospitalSpecialties(Long hospitalId) {
-//        return specialtyRepository.findByHospitalId(hospitalId);
-        return null;
+       return specialtyRepository.findByHospitalId(hospitalId);
     }
 
 }
