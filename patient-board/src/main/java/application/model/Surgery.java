@@ -50,4 +50,12 @@ public class Surgery {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public List<HospitalStaff> getHospitalStaff() {
+        return hospitalStaff;
+    }
+
+    public void setHospitalStaff(List<HospitalStaff> hospitalStaff) {
+        this.hospitalStaff = hospitalStaff;
+    }
 }

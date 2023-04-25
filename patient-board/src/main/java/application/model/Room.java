@@ -25,4 +25,20 @@ public class Room {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public Long getRoomID() {
+        return roomID;
+    }
+
+    public void setRoomID(Long roomID) {
+        this.roomID = roomID;
+    }
+
+    public Speciality getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
+    }
 }

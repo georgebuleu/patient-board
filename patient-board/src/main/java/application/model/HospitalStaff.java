@@ -87,4 +87,12 @@ public class HospitalStaff {
     public void setFunction(Function function) {
         this.function = function;
     }
+
+    public List<Surgery> getSurgeries() {
+        return surgeries;
+    }
+
+    public void setSurgeries(List<Surgery> surgeries) {
+        this.surgeries = surgeries;
+    }
 }

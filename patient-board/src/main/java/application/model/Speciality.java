@@ -37,4 +37,24 @@ public class Speciality {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Hospital> getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(List<Hospital> hospitals) {
+        this.hospitals = hospitals;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
 }

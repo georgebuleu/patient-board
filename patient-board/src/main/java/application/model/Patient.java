@@ -48,4 +48,32 @@ public class Patient {
     public void setPhone(Integer phone) {
         this.phone = phone;
     }
+
+    public void setPatientID(Long patientID) {
+        this.patientID = patientID;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public MedicalHistory getMedicalHistory() {
+        return medicalHistory;
+    }
+
+    public void setMedicalHistory(MedicalHistory medicalHistory) {
+        this.medicalHistory = medicalHistory;
+    }
+
+    public List<Diagnosis> getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(List<Diagnosis> diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 }

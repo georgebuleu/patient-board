@@ -75,4 +75,12 @@ public class Treatment {
     public void setTreatment(String treatment) {
         this.treatment = treatment;
     }
+
+    public Diagnosis getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(Diagnosis diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 }

@@ -43,4 +43,11 @@ public class Function {
             this.name = name;
         }
 
+    public List<HospitalStaff> getHospitalStaffList() {
+        return hospitalStaffList;
     }
+
+    public void setHospitalStaffList(List<HospitalStaff> hospitalStaffList) {
+        this.hospitalStaffList = hospitalStaffList;
+    }
+}
