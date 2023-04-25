@@ -1,9 +1,9 @@
 package application.service;
 
-import exception.NotFindPatientsBySpecialtyException;
-import model.Patient;
+import application.exception.NotFindPatientsBySpecialtyException;
+import application.model.Patient;
 import org.springframework.stereotype.Service;
-import repository.PatientRepository;
+import application.repository.PatientRepository;
 
 import java.util.List;
 

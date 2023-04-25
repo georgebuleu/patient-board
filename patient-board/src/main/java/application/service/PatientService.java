@@ -1,6 +1,6 @@
 package application.service;
 
-import model.Patient;
+import application.model.Patient;
 
 import java.util.List;
 
