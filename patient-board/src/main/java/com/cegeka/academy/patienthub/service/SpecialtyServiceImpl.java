@@ -1,10 +1,11 @@
-package application.service;
+package com.cegeka.academy.patienthub.service;
 
 
-import application.model.Speciality;
+import com.cegeka.academy.patienthub.model.Speciality;
+import com.cegeka.academy.patienthub.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import application.repository.SpecialtyRepository;
+import com.cegeka.academy.patienthub.repository.SpecialtyRepository;
 
 import java.util.List;
 

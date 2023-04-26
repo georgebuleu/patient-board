@@ -1,10 +1,8 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
-import javax.xml.crypto.Data;
-import java.util.Date;
 import java.util.List;
 
 @Entity

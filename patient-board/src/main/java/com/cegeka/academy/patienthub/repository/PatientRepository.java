@@ -1,6 +1,6 @@
-package application.repository;
+package com.cegeka.academy.patienthub.repository;
 
-import application.model.Patient;
+import com.cegeka.academy.patienthub.model.Patient;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

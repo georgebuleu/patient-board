@@ -1,9 +1,7 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
-
-import java.util.List;
 
 @Entity
 @Table(name = "hospitalStaff")

@@ -1,8 +1,7 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

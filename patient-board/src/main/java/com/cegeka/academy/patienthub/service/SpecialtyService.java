@@ -1,6 +1,6 @@
-package application.service;
+package com.cegeka.academy.patienthub.service;
 
-import application.model.Speciality;
+import com.cegeka.academy.patienthub.model.Speciality;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;

@@ -1,8 +1,6 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name="room")

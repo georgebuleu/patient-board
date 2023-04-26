@@ -1,8 +1,7 @@
-package application.model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import org.springframework.data.repository.cdi.Eager;
 
 import java.util.List;
 
