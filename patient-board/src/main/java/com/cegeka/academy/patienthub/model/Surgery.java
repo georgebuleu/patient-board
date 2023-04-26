@@ -16,7 +16,7 @@ public class Surgery {
     private String details;
     @Nonnull
     private Date date;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "surgeries", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<HospitalStaff> hospitalStaff;
 
     public void setId(Long id) {

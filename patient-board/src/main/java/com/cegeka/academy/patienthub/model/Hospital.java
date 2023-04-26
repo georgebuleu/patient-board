@@ -32,6 +32,7 @@ public class Hospital {
         this.phone = phone;
     }
 
+
     public Long getId() {
         return id;
     }
