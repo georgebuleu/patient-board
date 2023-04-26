@@ -3,6 +3,8 @@ package com.cegeka.academy.patienthub.model;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
+import java.util.List;
+
 @Entity
 @Table(name = "hospitalStaff")
 public class HospitalStaff {
@@ -29,6 +31,9 @@ public class HospitalStaff {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "functionId")
     private Function function;
+
+    @ManyToMany( fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    List<Surgery> surgeries;
 
     public HospitalStaff() {
     }
