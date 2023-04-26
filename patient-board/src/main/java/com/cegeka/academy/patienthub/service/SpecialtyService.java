@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface SpecialtyService {
 
-    List<Speciality> getHospitalSpecialties(Long hospitalId);
-
+    public List<Speciality> getHospitalSpecialties(Long hospitalId);
 }
