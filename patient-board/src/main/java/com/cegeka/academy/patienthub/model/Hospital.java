@@ -1,13 +1,15 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "hospital")
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hospitalID;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "address")
@@ -16,6 +18,9 @@ public class Hospital {
     private String email;
     @Column(name = "phone")
     private String phone;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Speciality> speciality;
 
     public Hospital() {
     }
@@ -27,8 +32,12 @@ public class Hospital {
         this.phone = phone;
     }
 
-    public Long getHospitalID() {
-        return hospitalID;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -61,5 +70,12 @@ public class Hospital {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public List<Speciality> getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(List<Speciality> speciality) {
+        this.speciality = speciality;
     }
 }

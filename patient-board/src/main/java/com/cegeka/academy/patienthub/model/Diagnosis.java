@@ -1,6 +1,8 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "diagnosis")
@@ -11,14 +13,18 @@ public class Diagnosis {
     private String initialDiagnosis;
     private String diagnosisAfter72Hours;
     private String finalDiagnosis;
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "diagnosis", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Treatment> treatments;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
     public Long getId() {
         return id;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getInitialDiagnosis() {
         return initialDiagnosis;
     }
@@ -41,5 +47,21 @@ public class Diagnosis {
 
     public void setFinalDiagnosis(String finalDiagnosis) {
         this.finalDiagnosis = finalDiagnosis;
+    }
+
+    public List<Treatment> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(List<Treatment> treatments) {
+        this.treatments = treatments;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }

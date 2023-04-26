@@ -1,20 +1,24 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.sql.Date;
 
 @Entity
 public class Surgery {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Nonnull
     private String medicalTeam;
     private String details;
     @Nonnull
     private Date date;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<HospitalStaff> hospitalStaff;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -45,5 +49,13 @@ public class Surgery {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public List<HospitalStaff> getHospitalStaff() {
+        return hospitalStaff;
+    }
+
+    public void setHospitalStaff(List<HospitalStaff> hospitalStaff) {
+        this.hospitalStaff = hospitalStaff;
     }
 }

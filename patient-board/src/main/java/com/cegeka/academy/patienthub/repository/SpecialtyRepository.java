@@ -1,6 +1,7 @@
-package repository;
+package com.cegeka.academy.patienthub.repository;
 
-import model.Speciality;
+
+import com.cegeka.academy.patienthub.model.Speciality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

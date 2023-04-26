@@ -1,7 +1,9 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "medicalHistory")
@@ -101,5 +103,6 @@ public class MedicalHistory {
     public void setGeneralExam(String generalExam) {
         this.generalExam = generalExam;
     }
+
 
 }

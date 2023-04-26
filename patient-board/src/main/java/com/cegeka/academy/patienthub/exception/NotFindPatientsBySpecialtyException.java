@@ -1,4 +1,4 @@
-package exception;
+package com.cegeka.academy.patienthub.exception;
 
 public class NotFindPatientsBySpecialtyException extends RuntimeException{
     public NotFindPatientsBySpecialtyException() {

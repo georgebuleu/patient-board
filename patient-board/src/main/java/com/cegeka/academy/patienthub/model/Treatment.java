@@ -1,8 +1,7 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
-
 import java.util.Date;
 
 @Entity
@@ -23,6 +22,9 @@ public class Treatment {
     @NonNull
     @Column(name = "toDate")
     private Date toDate;
+    @ManyToOne
+    @JoinColumn(name = "diagnosis_id")
+    private Diagnosis diagnosis;
 
     public Treatment() {
     }
@@ -72,5 +74,13 @@ public class Treatment {
 
     public void setTreatment(String treatment) {
         this.treatment = treatment;
+    }
+
+    public Diagnosis getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(Diagnosis diagnosis) {
+        this.diagnosis = diagnosis;
     }
 }

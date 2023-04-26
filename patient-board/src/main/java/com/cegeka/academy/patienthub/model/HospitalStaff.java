@@ -1,4 +1,4 @@
-package model;
+package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
@@ -32,8 +32,6 @@ public class HospitalStaff {
 
     public HospitalStaff() {
     }
-
-
 
     public Long getHospitalStaffId() {
         return hospitalStaffId;
@@ -82,4 +80,5 @@ public class HospitalStaff {
     public void setFunction(Function function) {
         this.function = function;
     }
+
 }

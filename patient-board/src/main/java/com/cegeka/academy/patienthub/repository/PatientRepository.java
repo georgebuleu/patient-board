@@ -1,6 +1,6 @@
-package repository;
+package com.cegeka.academy.patienthub.repository;
 
-import model.Patient;
+import com.cegeka.academy.patienthub.model.Patient;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    @Query("SELECT p FROM Patient p WHERE p.room.hospitalspeciality.hospital.hospitalID = :hospitalId")
+    @Query("SELECT p FROM Patient p WHERE p.room.speciality.hospitalspeciality.hospitalID = :hospitalId")
     List<Patient> findPatientsByHospitalId(@Param("hospitalId") Long hospitalId);
 
 
