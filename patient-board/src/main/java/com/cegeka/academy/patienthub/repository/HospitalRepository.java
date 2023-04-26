@@ -5,13 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface HospitalRepository extends JpaRepository<Hospital, Long> {
+import java.util.Optional;
 
+public interface HospitalRepository extends JpaRepository<Hospital, Long> {
     @Query("SELECT h FROM Hospital h "
             + "JOIN h.speciality s "
             + "WHERE s.id IN "
             + "(SELECT hs.speciality.id FROM HospitalStaff hs WHERE hs.hospitalStaffId = :hospitalStaffId)")
-    Hospital findByHospitalStaffId(@Param("hospitalStaffId") Long hospitalStaffId);
+    Optional<Hospital> findByHospitalStaffId(@Param("hospitalStaffId") Long hospitalStaffId);
 
 }
 
