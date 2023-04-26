@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SpecialtyServiceImpl implements SpecialtyService {
+public class HospitalServiceImpl implements HospitalService {
 
-    final private HospitalRepository hospitalRepository;
+    private final HospitalRepository hospitalRepository;
 
     @Autowired
-    public SpecialtyServiceImpl(HospitalRepository hospitalRepository) {
+    public HospitalServiceImpl(HospitalRepository hospitalRepository) {
         this.hospitalRepository = hospitalRepository;
     }
 
