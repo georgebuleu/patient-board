@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.service;
 
+import com.cegeka.academy.patienthub.exception.NotFindPatientsByHospitalException;
 import com.cegeka.academy.patienthub.exception.NotFindPatientsBySpecialtyException;
 import com.cegeka.academy.patienthub.model.Patient;
 import com.cegeka.academy.patienthub.service.PatientService;
@@ -17,12 +18,22 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> getAllPatientsBySpecialty(Long specialtyId){
+    public List<Patient> getAllPatientsBySpecialty(Long specialtyId) {
         List<Patient> patients = patientRepository.findAllPatientsBySpecialtyId(specialtyId);
-        if(patients.isEmpty()){
-                throw new NotFindPatientsBySpecialtyException();
+        if (patients.isEmpty()) {
+            throw new NotFindPatientsBySpecialtyException();
 
-        }else
-        return patients;
+        } else
+            return patients;
+    }
+
+    @Override
+    public List<Patient> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId) {
+        List<Patient> patients = patientRepository.getAllPatientsByHospitalIdAndSpecialityId(hospitalId, specialityId);
+        if (patients.isEmpty()) {
+            throw new NotFindPatientsByHospitalException();
+
+        } else
+            return patients;
     }
 }
