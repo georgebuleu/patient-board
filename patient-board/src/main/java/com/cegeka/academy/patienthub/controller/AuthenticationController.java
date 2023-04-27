@@ -1,6 +1,6 @@
 package com.cegeka.academy.patienthub.controller;
 
-import com.cegeka.academy.patienthub.model.User;
+import com.cegeka.academy.patienthub.dto.User;
 import com.cegeka.academy.patienthub.service.AuthService;
 import com.cegeka.academy.patienthub.service.SessionService;
 import jakarta.servlet.http.Cookie;
@@ -34,7 +34,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request){
         try {
-            authService.authenticate(user.getEmail(), user.getPassword());
+            authService.authenticate(user);
             response.addCookie(sessionService.createSessionCookie(request));
             return ResponseEntity.status(HttpStatus.OK).body("LoginSuccessful");
         } catch (RuntimeException e) {
