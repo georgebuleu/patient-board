@@ -23,7 +23,7 @@ public class HospitalServiceImpl implements HospitalService{
        return hospitalRepository.findSpecialtiesByHospitalId(hospitalId);
     }
 
-
+    @Override
     public Optional<Hospital> getHospitalByUser(Long userId) {
         return hospitalRepository.findByHospitalStaffId(userId);
     }
