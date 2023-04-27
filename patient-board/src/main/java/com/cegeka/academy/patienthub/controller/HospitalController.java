@@ -27,6 +27,6 @@ public class HospitalController {
                                                  .stream()
                                                  .map(Speciality::getName)
                                                  .collect(Collectors.toList());
-        return ResponseEntity.ok(specialties);
+        return ResponseEntity.ok().body(specialties);
     }
 }
