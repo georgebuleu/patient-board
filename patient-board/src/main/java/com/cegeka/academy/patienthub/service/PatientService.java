@@ -9,4 +9,6 @@ public interface PatientService {
     List<Patient> getAllPatientsBySpecialty(Long specialtyId);
 
     List<Patient> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId);
+
+    List<Patient> getAllPatientsByHospitalId(Long hospitalId);
 }

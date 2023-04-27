@@ -12,9 +12,12 @@ import java.util.List;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    @Query("SELECT p FROM Patient p JOIN p.room r JOIN r.speciality s JOIN s.hospitals h WHERE h.id = :hospitalId AND s.id = :specialityId")
-    List<Patient> getAllPatientsByHospitalIdAndSpecialityId(Long hospitals_id, Long specialityId);
-
-
     List<Patient> findAllPatientsBySpecialtyId(@Param("specialtyId") Long specialtyId);
+
+    @Query("SELECT p FROM Patient p JOIN p.room r JOIN r.speciality s JOIN s.hospitals h WHERE h.id = :hospitalId AND s.id = :specialityId")
+    List<Patient> getAllPatientsByHospitalIdAndSpecialityId(@Param("hospitalId") Long hospitals_id, @Param("specialityId") Long specialityId);
+
+    @Query("SELECT p FROM Patient p JOIN p.room r JOIN r.speciality s JOIN s.hospitals h WHERE h.id = :hospitalId")
+    List<Patient> getAllPatientsByHospitalId(@Param("hospitalId") Long hospitals_id);
+
 }
