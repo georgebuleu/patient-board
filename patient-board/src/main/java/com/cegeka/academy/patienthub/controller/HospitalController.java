@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.controller;
 
+import com.cegeka.academy.patienthub.model.Hospital;
 import com.cegeka.academy.patienthub.model.Speciality;
 import com.cegeka.academy.patienthub.service.HospitalService;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,5 +30,15 @@ public class HospitalController {
                                                  .map(Speciality::getName)
                                                  .collect(Collectors.toList());
         return ResponseEntity.ok().body(specialties);
+    }
+
+    @GetMapping("/{hospitalStaffId}")
+    public ResponseEntity<Hospital> getHospitalByUser(@PathVariable("hospitalStaffId") Long userId) {
+        Optional<Hospital> hospital = hospitalService.getHospitalByUser(userId);
+        if (hospital.isPresent()) {
+            return ResponseEntity.ok(hospital.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
