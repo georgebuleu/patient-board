@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 public interface SessionService {
     Cookie createSessionCookie(HttpServletRequest request);
     boolean validateSession(HttpServletRequest request, Cookie cookie);
-    void destroySession(HttpServletRequest request, Cookie cookie);
+    void destroySession(HttpServletRequest request);
     Cookie getSessionCookie(HttpServletRequest request);
 }
