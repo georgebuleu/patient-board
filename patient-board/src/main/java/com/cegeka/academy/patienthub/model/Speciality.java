@@ -15,6 +15,8 @@ public class Speciality {
     private String name;
     @OneToMany(mappedBy = "speciality", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Room> rooms;
+    @ManyToMany(mappedBy = "speciality", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Hospital> hospitals;
 
     public Speciality() {
     }
