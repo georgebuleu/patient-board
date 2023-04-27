@@ -8,9 +8,8 @@ import java.util.List;
 
 public interface HospitalService {
 
-List<Speciality> getHospitalSpecialties(Long hospitalId);
+    List<Speciality> getHospitalSpecialties(Long hospitalId);
 
-public interface HospitalService {
     Optional<Hospital> getHospitalByUser(Long userId);
 
 }
