@@ -1,11 +1,13 @@
 package com.cegeka.academy.patienthub.service;
 
+import com.cegeka.academy.patienthub.DTO.PatientDTO;
 import com.cegeka.academy.patienthub.exception.NotFindPatientsBySpecialtyException;
 import com.cegeka.academy.patienthub.model.Patient;
-import com.cegeka.academy.patienthub.service.PatientService;
 import org.springframework.stereotype.Service;
 import com.cegeka.academy.patienthub.repository.PatientRepository;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,12 +19,32 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> getAllPatientsBySpecialty(Long specialtyId){
+    public List<Patient> getAllPatientsBySpecialty(Long specialtyId) {
         List<Patient> patients = patientRepository.findAllPatientsBySpecialtyId(specialtyId);
-        if(patients.isEmpty()){
-                throw new NotFindPatientsBySpecialtyException();
+        if (patients.isEmpty()) {
+            throw new NotFindPatientsBySpecialtyException();
 
-        }else
-        return patients;
+        } else
+            return patients;
+    }
+
+    @Override
+    public List<PatientDTO> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId) {
+        List<Patient> patients = patientRepository.getAllPatientsByHospitalIdAndSpecialityId(hospitalId,specialityId);
+        List<PatientDTO> patientDTOs = new ArrayList<>();
+        for (Patient patient : patients) {
+            patientDTOs.add(new PatientDTO(patient.getPatientID(),patient.getName()));
+        }
+        return patientDTOs;
+    }
+
+    @Override
+    public List<PatientDTO> getAllPatientsByHospitalId(Long hospitalId) {
+        List<Patient> patients = patientRepository.getAllPatientsByHospitalId(hospitalId);
+        List<PatientDTO> patientDTOs = new ArrayList<>();
+        for (Patient patient : patients) {
+            patientDTOs.add(new PatientDTO(patient.getPatientID(), patient.getName()));
+        }
+        return patientDTOs;
     }
 }

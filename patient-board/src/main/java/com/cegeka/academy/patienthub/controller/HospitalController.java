@@ -1,7 +1,9 @@
 package com.cegeka.academy.patienthub.controller;
 
+import com.cegeka.academy.patienthub.model.Patient;
 import com.cegeka.academy.patienthub.model.Speciality;
 import com.cegeka.academy.patienthub.service.HospitalService;
+import com.cegeka.academy.patienthub.service.PatientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +25,10 @@ public class HospitalController {
 
     @GetMapping("/{hospitalID}/specialties")
     public ResponseEntity<List<String>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
-        List<String> specialties= hospitalService.getHospitalSpecialties(hospitalID)
-                                                 .stream()
-                                                 .map(Speciality::getName)
-                                                 .collect(Collectors.toList());
+        List<String> specialties = hospitalService.getHospitalSpecialties(hospitalID)
+                .stream()
+                .map(Speciality::getName)
+                .collect(Collectors.toList());
         return ResponseEntity.ok().body(specialties);
     }
 }
