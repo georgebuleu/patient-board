@@ -1,6 +1,6 @@
 package com.cegeka.academy.patienthub.service;
 
-import com.cegeka.academy.patienthub.dto.User;
+import com.cegeka.academy.patienthub.DTO.User;
 import com.cegeka.academy.patienthub.exception.InvalidEmailException;
 import com.cegeka.academy.patienthub.exception.InvalidPasswordException;
 import org.springframework.stereotype.Service;
