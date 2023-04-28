@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.controller;
 
+import com.cegeka.academy.patienthub.DTO.SpecialtyDTO;
 import com.cegeka.academy.patienthub.model.Patient;
 import com.cegeka.academy.patienthub.model.Speciality;
 import com.cegeka.academy.patienthub.service.HospitalService;
@@ -24,11 +25,8 @@ public class HospitalController {
     }
 
     @GetMapping("/{hospitalID}/specialties")
-    public ResponseEntity<List<String>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
-        List<String> specialties = hospitalService.getHospitalSpecialties(hospitalID)
-                .stream()
-                .map(Speciality::getName)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok().body(specialties);
+    public ResponseEntity<List<SpecialtyDTO>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
+
+        return ResponseEntity.ok().body(hospitalService.getHospitalSpecialtiesIdAndName(hospitalID));
     }
 }
