@@ -19,16 +19,6 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> getAllPatientsBySpecialty(Long specialtyId) {
-        List<Patient> patients = patientRepository.findAllPatientsBySpecialtyId(specialtyId);
-        if (patients.isEmpty()) {
-            throw new NotFindPatientsBySpecialtyException();
-
-        } else
-            return patients;
-    }
-
-    @Override
     public List<PatientDTO> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId) {
         List<Patient> patients = patientRepository.getAllPatientsByHospitalIdAndSpecialityId(hospitalId,specialityId);
         List<PatientDTO> patientDTOs = new ArrayList<>();
