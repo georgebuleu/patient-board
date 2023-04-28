@@ -2,7 +2,6 @@ package com.cegeka.academy.patienthub.service;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
