@@ -24,9 +24,6 @@ public class HospitalController {
         this.hospitalService = hospitalService;
     }
 
-    @GetMapping("/{hospitalID}/specialties")
-    public ResponseEntity<List<SpecialtyDTO>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
 
-        return ResponseEntity.ok().body(hospitalService.getHospitalSpecialtiesIdAndName(hospitalID));
-    }
+
 }
