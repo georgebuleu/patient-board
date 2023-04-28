@@ -12,9 +12,6 @@ public class Room {
     @ManyToOne
     @JoinColumn(name = "speciality_id")
     private Speciality speciality;
-    public Long getroomID() {
-        return roomID;
-    }
 
     public int getCapacity() {
         return capacity;

@@ -18,27 +18,17 @@ import java.util.stream.Collectors;
 public class HospitalController {
 
     private final HospitalService hospitalService;
-    private final PatientService patientService;
-    public HospitalController(HospitalService hospitalService, PatientService patientService) {
+
+    public HospitalController(HospitalService hospitalService) {
         this.hospitalService = hospitalService;
-        this.patientService = patientService;
     }
 
     @GetMapping("/{hospitalID}/specialties")
     public ResponseEntity<List<String>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
-        List<String> specialties= hospitalService.getHospitalSpecialties(hospitalID)
-                                                 .stream()
-                                                 .map(Speciality::getName)
-                                                 .collect(Collectors.toList());
-        return ResponseEntity.ok().body(specialties);
-    }
-
-    @GetMapping("/{hospitalID}/patients")
-    public ResponseEntity<List<String>> getAllPatientsByHospitalId(@PathVariable("hospitalID") Long hospitalID) {
-        List<Long> patients= patientService.getAllPatientsByHospitalId(hospitalID)
+        List<String> specialties = hospitalService.getHospitalSpecialties(hospitalID)
                 .stream()
-                .map(Patient::getPatientID)
-                .toList();
-        return ResponseEntity.ok().body(patients.stream().map(String::valueOf).collect(Collectors.toList()));
+                .map(Speciality::getName)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok().body(specialties);
     }
 }
