@@ -7,10 +7,8 @@ import com.cegeka.academy.patienthub.repository.MedicalHistoryRepository;
 import com.cegeka.academy.patienthub.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class MedicalHistoryServiceImpl implements MedicalHistoryService{
+public class MedicalHistoryServiceImpl implements MedicalHistoryService {
 
     private final MedicalHistoryRepository medicalHistoryRepository;
     private final PatientRepository patientRepository;
@@ -22,44 +20,32 @@ public class MedicalHistoryServiceImpl implements MedicalHistoryService{
 
     @Override
     public MedicalHistory getMedicalHistoryByPatient(Long id) {
-        Optional<MedicalHistory> medicalHistory = medicalHistoryRepository.findByPatientId(id);
-       if(medicalHistory.isEmpty()) {
-           throw new MedicalHistoryException("No prior medical history for this patient");
-       }
-       return medicalHistory.get();
+        return medicalHistoryRepository.findByPatientId(id)
+                .orElseThrow(() -> new MedicalHistoryException("No prior medical history for this patient"));
     }
 
     @Override
     public void createMedicalHistory(MedicalHistory medicalHistory, Long patientId) {
-           Optional<Patient> patient = patientRepository.findById(patientId);
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(() -> new MedicalHistoryException("There is no patient with this id"));
 
-           patient.ifPresent(p -> {
-               medicalHistory.setPatient(p);
-               medicalHistoryRepository.save(medicalHistory);
-           });
-           if(patient.isEmpty())
-               throw new MedicalHistoryException("There is no patient with this id");
+        medicalHistory.setPatient(patient);
+        medicalHistoryRepository.save(medicalHistory);
+
     }
 
     @Override
     public void editMedicalHistory(MedicalHistory medicalHistory, Long patientId) {
-        Optional<MedicalHistory> currentMedicalHistory = medicalHistoryRepository.findByPatientId(patientId);
+        MedicalHistory currentMedicalHistory = medicalHistoryRepository.findByPatientId(patientId)
+                .orElseThrow(() -> new MedicalHistoryException("There is no patient with this id;"));
 
-        currentMedicalHistory.ifPresent(history -> {
-            history.setDiseaseHistory(medicalHistory.getDiseaseHistory());
-            history.setHeredoColHistory(medicalHistory.getHeredoColHistory());
-            history.setBehaviours(medicalHistory.getBehaviours());
-            history.setGeneralExam(medicalHistory.getGeneralExam());
-            history.setBackgroundMeds(medicalHistory.getBackgroundMeds());
-            history.setLivingWorkingConditions(medicalHistory.getLivingWorkingConditions());
-            medicalHistoryRepository.save(history);
-        });
-
-
-
-        if(medicalHistoryRepository.findByPatientId(patientId).isEmpty()){
-            throw new MedicalHistoryException("There is no patient with this id;");
-        }
+        currentMedicalHistory.setDiseaseHistory(medicalHistory.getDiseaseHistory());
+        currentMedicalHistory.setHeredoColHistory(medicalHistory.getHeredoColHistory());
+        currentMedicalHistory.setBehaviours(medicalHistory.getBehaviours());
+        currentMedicalHistory.setGeneralExam(medicalHistory.getGeneralExam());
+        currentMedicalHistory.setBackgroundMeds(medicalHistory.getBackgroundMeds());
+        currentMedicalHistory.setLivingWorkingConditions(medicalHistory.getLivingWorkingConditions());
+        medicalHistoryRepository.save(currentMedicalHistory);
     }
 
 

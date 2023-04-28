@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("hospitals/patient/{id}")
+@RequestMapping("patient/{patientId}")
 public class MedicalHistoryController {
     private final MedicalHistoryService medicalHistoryService;
 
@@ -20,17 +20,21 @@ public class MedicalHistoryController {
 
     @ExceptionHandler(MedicalHistoryException.class)
     @GetMapping("/medical-history")
-    public ResponseEntity<MedicalHistory> getMedicalHistory(@PathVariable Long id) {
-        MedicalHistory medicalHistory = medicalHistoryService.getMedicalHistoryByPatient(id);
-        return ResponseEntity.status(200).body(medicalHistory);
+    public ResponseEntity<MedicalHistory> getMedicalHistory(@PathVariable Long patientId) {
+        try {
+            MedicalHistory medicalHistory = medicalHistoryService.getMedicalHistoryByPatient(patientId);
+            return ResponseEntity.status(200).body(medicalHistory);
+        } catch (MedicalHistoryException e) {
+            return ResponseEntity.status(404).build();
+        }
     }
     @PostMapping("/medical-history")
-    public void addMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
-        medicalHistoryService.createMedicalHistory(medicalHistory, id);
+    public void addMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long patientId) {
+        medicalHistoryService.createMedicalHistory(medicalHistory, patientId);
     }
 
     @PutMapping("/medical-history")
-    public void editMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
-        medicalHistoryService.editMedicalHistory(medicalHistory, id);
+    public void editMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long patientId) {
+        medicalHistoryService.editMedicalHistory(medicalHistory, patientId);
     }
 }
