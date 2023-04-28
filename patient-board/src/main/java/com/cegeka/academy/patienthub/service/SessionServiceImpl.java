@@ -1,21 +1,20 @@
 package com.cegeka.academy.patienthub.service;
 
-import com.cegeka.academy.patienthub.service.SessionService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.logging.Logger;
+import java.util.Optional;
 
 @Service
 public class SessionServiceImpl implements SessionService {
     private final static String SESSION_COOKIE = "JSESSIONID";
     @Override
     public Cookie createSessionCookie(HttpServletRequest request) {
-        Cookie sessionCookie = getSessionCookie(request);
-        if(sessionCookie != null && validateSession(request, sessionCookie))
+        Optional<Cookie> sessionCookie = getSessionCookie(request);
+        if(sessionCookie.isPresent() && validateSession(request, sessionCookie.get()))
         {
-            return sessionCookie;
+            return sessionCookie.get();
         }
         String sessionId = request.getSession().getId();
         Cookie cookie = new Cookie(SESSION_COOKIE, sessionId);
@@ -42,15 +41,20 @@ public class SessionServiceImpl implements SessionService {
         }
     }
     @Override
-    public Cookie getSessionCookie(HttpServletRequest request){
+    public Optional<Cookie> getSessionCookie(HttpServletRequest request){
+        Optional<Cookie> optional = Optional.empty();
         if (request.getCookies() != null) {
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 if ("JSESSIONID".equals(cookie.getName())) {
-                    return cookie;
+                    optional = Optional.of(cookie);
+                    break;
                 }
             }
         }
-        return null;
+        return optional;
     }
+
+
+
 }

@@ -5,27 +5,28 @@ import com.cegeka.academy.patienthub.exception.InvalidEmailException;
 import com.cegeka.academy.patienthub.exception.InvalidPasswordException;
 import org.springframework.stereotype.Service;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Optional;
+
 
 @Service
 public class AuthServiceImpl implements AuthService {
     private final HospitalStaffServiceImpl hospitalStaffService;
-    private final Logger logger = Logger.getLogger("AuthServiceImpl");
 
     public AuthServiceImpl(HospitalStaffServiceImpl hospitalStaffService) {
         this.hospitalStaffService = hospitalStaffService;
     }
 
     @Override
-    public boolean authenticate(User user) throws RuntimeException {
-        User currentUser = hospitalStaffService.getUserByEmail(user.getEmail());
-        if(!user.getEmail().trim().equals(currentUser.getEmail()) || user.getEmail().isEmpty()){
+    public void authenticate(User user) {
+        Optional<User> currentUser = hospitalStaffService.getUserByEmail(user.email());
+        if(currentUser.isEmpty()) {
+            throw new InvalidEmailException("There is no such email");
+        }
+        if(!user.email().trim().equals(currentUser.get().email()) || user.email().isEmpty()){
             throw new InvalidEmailException("Your is email is wrong!");
         }
-        if(!user.getPassword().trim().equals(currentUser.getPassword()) || user.getPassword().isEmpty()) {
+        if(!user.password().trim().equals(currentUser.get().password()) || user.password().isEmpty()) {
             throw new InvalidPasswordException("Your password is wrong!");
         }
-        return true;
     }
 }

@@ -5,18 +5,15 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import java.util.logging.Logger;
+import java.util.Optional;
 
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     private SessionService sessionService;
-    private final Logger logger = Logger.getLogger("AuthenticationInterceptor");
 
     public AuthenticationInterceptor(){}
     @Autowired
@@ -25,10 +22,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Cookie sessionCookie = sessionService.getSessionCookie(request);
+        Optional<Cookie> sessionCookie = sessionService.getSessionCookie(request);
 
-        if (sessionCookie != null) {
-            if (sessionService.validateSession(request, sessionCookie))
+        if (sessionCookie.isPresent()) {
+            if (sessionService.validateSession(request, sessionCookie.get()))
                 return true;
         }
 
@@ -36,6 +33,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return true;
         }
         response.sendRedirect("/patient-hub/login");
+        response.setStatus(401);
         return false;
     }
 }
