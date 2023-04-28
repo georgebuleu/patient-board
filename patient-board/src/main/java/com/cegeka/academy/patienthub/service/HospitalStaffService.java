@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 public interface HospitalStaffService  {
-   User getUserByEmail(String email);
+   Optional <User> getUserByEmail(String email);
 }
