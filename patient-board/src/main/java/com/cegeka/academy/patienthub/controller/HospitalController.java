@@ -1,5 +1,7 @@
 package com.cegeka.academy.patienthub.controller;
 
+import com.cegeka.academy.patienthub.model.Patient;
+import com.cegeka.academy.patienthub.model.Hospital;
 import com.cegeka.academy.patienthub.model.Speciality;
 import com.cegeka.academy.patienthub.service.HospitalService;
 import org.springframework.http.ResponseEntity;
