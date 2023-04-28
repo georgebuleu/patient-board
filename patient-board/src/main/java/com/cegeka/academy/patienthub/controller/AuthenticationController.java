@@ -1,6 +1,7 @@
 package com.cegeka.academy.patienthub.controller;
 
 import com.cegeka.academy.patienthub.dto.User;
+import com.cegeka.academy.patienthub.exception.FailedAuthenticationException;
 import com.cegeka.academy.patienthub.service.AuthService;
 import com.cegeka.academy.patienthub.service.SessionService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,19 +23,25 @@ public class AuthenticationController {
         this.authService = authService;
         this.sessionService = sessionService;
     }
-    @ExceptionHandler(AuthenticationException.class)
+
+    @GetMapping("/login")
+    public ResponseEntity<String> loginPage(){
+        return ResponseEntity.status(401).build();
+    }
+
+    @ExceptionHandler(FailedAuthenticationException.class)
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user, HttpServletResponse response, HttpServletRequest request){
+    public ResponseEntity<String> authenticate(@RequestBody User user, HttpServletResponse response, HttpServletRequest request){
         try {
             authService.authenticate(user);
             response.addCookie(sessionService.createSessionCookie(request));
             return ResponseEntity.status(HttpStatus.OK).body("Login Successful");
-        } catch (AuthenticationException e) {
+        } catch (FailedAuthenticationException e) {
            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-
     }
-    @GetMapping("/logout")
+    @ExceptionHandler(FailedAuthenticationException.class)
+    @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request){
         sessionService.destroySession(request);
         return ResponseEntity.status(HttpStatus.OK).body("You have been logged out");

@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.interceptor;
 
+import com.cegeka.academy.patienthub.exception.FailedAuthenticationException;
 import com.cegeka.academy.patienthub.service.SessionService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,10 +25,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Optional<Cookie> sessionCookie = sessionService.getSessionCookie(request);
 
-        if (sessionCookie.isPresent()) {
-            if (sessionService.validateSession(request, sessionCookie.get()))
+        if (sessionCookie.isPresent() && sessionService.validateSession(request, sessionCookie.get()))
                 return true;
-        }
 
         if (request.getRequestURI().equals("/patient-hub/login")) {
             return true;
