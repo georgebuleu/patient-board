@@ -4,10 +4,7 @@ import com.cegeka.academy.patienthub.model.Hospital;
 import com.cegeka.academy.patienthub.model.Speciality;
 import com.cegeka.academy.patienthub.service.HospitalService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +29,8 @@ public class HospitalController {
         return ResponseEntity.ok().body(specialties);
     }
 
-    @GetMapping("/{hospitalStaffId}")
-    public ResponseEntity<Hospital> getHospitalByUser(@PathVariable("hospitalStaffId") Long userId) {
+    @GetMapping("/hospital")
+    public ResponseEntity<Hospital> getHospitalByUser(@RequestParam("hospitalStaffId") Long userId) {
         Optional<Hospital> hospital = hospitalService.getHospitalByUser(userId);
         if (hospital.isPresent()) {
             return ResponseEntity.ok(hospital.get());
