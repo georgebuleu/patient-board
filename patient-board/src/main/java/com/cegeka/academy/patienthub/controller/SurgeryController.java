@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/hospitals/patient/{id}")
+@RequestMapping("/patient/{patientId}")
 public class SurgeryController {
     private final SurgeryService surgeryService;
 
@@ -16,16 +16,21 @@ public class SurgeryController {
     }
 
     @GetMapping("/surgery")
-    public ResponseEntity<Surgery> getSurgeries(@PathVariable Long id) {
-        return ResponseEntity.status(200).body(surgeryService.getByPatientId(id));
+    public ResponseEntity<Surgery> getSurgeries(@PathVariable Long patientId) {
+        try {
+            Surgery surgery = surgeryService.getByPatientId(patientId);
+            return ResponseEntity.status(200).body(surgery);
+        } catch (SurgeryException e) {
+            return ResponseEntity.status(404).build();
+        }
     }
     @PostMapping("/surgery")
-    public void addSurgery(@PathVariable Long id, @RequestBody Surgery surgery) {
-        surgeryService.addSurgery(surgery, id);
+    public void addSurgery(@PathVariable Long patientId, @RequestBody Surgery surgery) {
+        surgeryService.addSurgery(surgery, patientId);
     }
 
     @PutMapping("/surgery")
-    public void editSurgery(@PathVariable Long id, @RequestBody Surgery surgery){
-        surgeryService.editSurgery(surgery, id);
+    public void editSurgery(@PathVariable Long patientId, @RequestBody Surgery surgery){
+        surgeryService.editSurgery(surgery, patientId);
     }
 }
