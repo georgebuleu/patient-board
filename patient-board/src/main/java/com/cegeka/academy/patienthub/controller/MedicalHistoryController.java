@@ -20,17 +20,17 @@ public class MedicalHistoryController {
 
     @ExceptionHandler(MedicalHistoryException.class)
     @GetMapping("/medical-history")
-    ResponseEntity<MedicalHistory> getMedicalHistory(@PathVariable Long id) {
+    public ResponseEntity<MedicalHistory> getMedicalHistory(@PathVariable Long id) {
         MedicalHistory medicalHistory = medicalHistoryService.getMedicalHistoryByPatient(id);
         return ResponseEntity.status(200).body(medicalHistory);
     }
     @PostMapping("/medical-history")
-    void addMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
+    public void addMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
         medicalHistoryService.createMedicalHistory(medicalHistory, id);
     }
 
     @PutMapping("/medical-history")
-    void editMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
+    public void editMedicalHistory(@RequestBody MedicalHistory medicalHistory, @PathVariable Long id) {
         medicalHistoryService.editMedicalHistory(medicalHistory, id);
     }
 }
