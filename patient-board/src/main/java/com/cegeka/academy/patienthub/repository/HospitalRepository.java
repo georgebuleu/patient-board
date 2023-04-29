@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface HospitalRepository extends JpaRepository<Hospital, Long> {
 
-    @Query("SELECT h.speciality FROM Hospital h WHERE h.id = :hospitalId")
-    List<Speciality> findSpecialtiesByHospitalId(@Param("hospitalId") Long hospitalId);
-
     @Query("SELECT h FROM Hospital h "
             + "JOIN h.speciality s "
             + "WHERE s.id IN "
