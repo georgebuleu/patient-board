@@ -23,12 +23,6 @@ public class HospitalController {
         this.hospitalService = hospitalService;
     }
 
-    @GetMapping("/{hospitalID}/specialties")
-    public ResponseEntity<List<String>> getHospitalSpecialties(@PathVariable("hospitalID") Long hospitalID) {
-        List<String> specialties= hospitalService.getHospitalSpecialties(hospitalID)
-                                                 .stream()
-                                                 .map(Speciality::getName)
-                                                 .collect(Collectors.toList());
-        return ResponseEntity.ok().body(specialties);
-    }
+
+
 }
