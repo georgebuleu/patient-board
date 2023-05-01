@@ -13,4 +13,5 @@ public interface DiagnosisRepository extends JpaRepository<Diagnosis, Long> {
 
     @Query("SELECT d FROM Diagnosis d where d.patient.patientID = :patientID")
     List<Diagnosis> findDiagnosisByPatientId(@Param("patientID") Long patientId);
+
 }
