@@ -1,5 +1,7 @@
 package com.cegeka.academy.patienthub.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -49,6 +51,7 @@ public class Diagnosis {
         this.finalDiagnosis = finalDiagnosis;
     }
 
+    @JsonManagedReference
     public List<Treatment> getTreatments() {
         return treatments;
     }
@@ -57,6 +60,7 @@ public class Diagnosis {
         this.treatments = treatments;
     }
 
+    @JsonBackReference
     public Patient getPatient() {
         return patient;
     }
