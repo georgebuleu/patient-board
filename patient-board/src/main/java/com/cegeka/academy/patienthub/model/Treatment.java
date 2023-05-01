@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 import java.util.Date;
@@ -76,6 +77,7 @@ public class Treatment {
         this.treatment = treatment;
     }
 
+    @JsonBackReference
     public Diagnosis getDiagnosis() {
         return diagnosis;
     }
