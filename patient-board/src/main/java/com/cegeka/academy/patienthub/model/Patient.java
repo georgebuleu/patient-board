@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
@@ -131,6 +132,7 @@ public class Patient {
         this.medicalHistory = medicalHistory;
     }
 
+    @JsonManagedReference
     public List<Diagnosis> getDiagnosis() {
         return diagnosis;
     }
