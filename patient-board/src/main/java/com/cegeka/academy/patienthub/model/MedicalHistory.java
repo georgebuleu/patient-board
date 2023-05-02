@@ -3,7 +3,6 @@ package com.cegeka.academy.patienthub.model;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
 @Table(name = "medicalHistory")
@@ -34,11 +33,15 @@ public class MedicalHistory {
     @Nonnull
     private String generalExam;
 
+    @OneToOne
+    @JoinColumn(name = "patientID")
+    private Patient patient;
+
     public MedicalHistory() { }
 
-    public MedicalHistory(Long medicalHistoryID, String heredoColHistory, String livingWorkingConditions, String behaviours,
-                          String backgroundMeds, String diseaseHistory, String generalExam) {
-
+    public MedicalHistory(Long medicalHistoryID, String heredoColHistory, @Nonnull String livingWorkingConditions,
+                          @Nonnull String behaviours, String backgroundMeds, String diseaseHistory,
+                          @Nonnull String generalExam, Patient patient) {
         this.medicalHistoryID = medicalHistoryID;
         this.heredoColHistory = heredoColHistory;
         this.livingWorkingConditions = livingWorkingConditions;
@@ -46,6 +49,15 @@ public class MedicalHistory {
         this.backgroundMeds = backgroundMeds;
         this.diseaseHistory = diseaseHistory;
         this.generalExam = generalExam;
+        this.patient = patient;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public Long getMedicalHistoryID() {
