@@ -63,6 +63,9 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diagnosis> diagnosis;
 
+    @OneToMany(mappedBy = "patient")
+    private List<Surgery> surgeries;
+
     public Patient() {
     }
 
