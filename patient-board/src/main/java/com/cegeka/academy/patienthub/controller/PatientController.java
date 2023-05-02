@@ -32,5 +32,9 @@ public class PatientController {
         patientService.create(patientDTO);
     }
 
+    @PutMapping("/modify-patient/{id}")
+    public void updatePatientDetails(@RequestBody PatientDTO patientDTO, @PathVariable Long id){
+        patientService.update(id, patientDTO); }
+
 
 }

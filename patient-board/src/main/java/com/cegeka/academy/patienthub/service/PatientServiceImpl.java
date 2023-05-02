@@ -57,7 +57,21 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient update(Long id, PatientDTO patientDTO) {
-        return null;
+        Patient patient = patientRepository.findById(id)
+                          .orElseThrow(() -> new RuntimeException("Patient with " + id +" was not found"));
+
+        patient.setName(patientDTO.getName());
+        patient.setSex(patientDTO.getSex());
+        patient.setBirthDate(patientDTO.getBirthDate());
+        patient.setAddress(patientDTO.getAddress());
+        patient.setCnp(patientDTO.getCnp());
+        patient.setSeriesAndNumber(patientDTO.getSeriesAndNumber());
+        patient.setStatusOfInsured(patientDTO.getStatusOfInsured());
+        patient.setTypeOfAdmission(patientDTO.getTypeOfAdmission());
+        patient.setTypeOfInsurance(patientDTO.getTypeOfInsurance());
+
+        return patientRepository.save(patient);
+
     }
 
 }
