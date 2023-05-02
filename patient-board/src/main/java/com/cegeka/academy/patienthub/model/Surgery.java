@@ -11,13 +11,22 @@ public class Surgery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Nonnull
-    private String medicalTeam;
     private String details;
     @Nonnull
     private Date date;
     @ManyToMany(mappedBy = "surgeries", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<HospitalStaff> hospitalStaff;
+    @ManyToOne
+    @JoinColumn(name="patient_id")
+    private Patient patient;
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -27,13 +36,6 @@ public class Surgery {
         return id;
     }
 
-    public String getMedicalTeam() {
-        return medicalTeam;
-    }
-
-    public void setMedicalTeam(String medicalTeam) {
-        this.medicalTeam = medicalTeam;
-    }
 
     public String getDetails() {
         return details;
