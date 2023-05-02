@@ -3,15 +3,12 @@ package com.cegeka.academy.patienthub.controller;
 import com.cegeka.academy.patienthub.DTO.PatientDTO;
 import com.cegeka.academy.patienthub.service.PatientService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("hospitals/{hospitalID}")
+@RequestMapping()
 public class PatientController {
 
     private PatientService patientService;
@@ -19,12 +16,21 @@ public class PatientController {
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
-    @GetMapping("/patients")
+
+    @GetMapping("hospitals/{hospitalID}/patients")
     public ResponseEntity<List<PatientDTO>> getAllPatientsByHospitalId(@PathVariable("hospitalID") Long hospitalID) {
         return ResponseEntity.ok().body(patientService.getAllPatientsByHospitalId(hospitalID));
     }
-    @GetMapping("/specialities/{specialityID}/patients")
+
+    @GetMapping("hospitals/{hospitalID}/specialities/{specialityID}/patients")
     public ResponseEntity<List<PatientDTO>> getAllPatientsByHospitalIdAndSpecialityId(@PathVariable("hospitalID") Long hospitalID, @PathVariable("specialityID") Long specialityID) {
-        return ResponseEntity.ok().body(patientService.getAllPatientsByHospitalIdAndSpecialityId(hospitalID,specialityID));
+        return ResponseEntity.ok().body(patientService.getAllPatientsByHospitalIdAndSpecialityId(hospitalID, specialityID));
     }
+
+    @PostMapping("/patient")
+    public void save(@RequestBody PatientDTO patientDTO){
+        patientService.create(patientDTO);
+    }
+
+
 }

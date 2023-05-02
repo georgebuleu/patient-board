@@ -11,4 +11,8 @@ public interface PatientService {
     List<PatientDTO> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId);
 
     List<PatientDTO> getAllPatientsByHospitalId(Long hospitalId);
+
+    void create(PatientDTO patientDTO);
+
+    Patient update(Long id, PatientDTO patientDTO);
 }

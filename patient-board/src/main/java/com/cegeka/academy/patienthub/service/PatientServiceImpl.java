@@ -37,4 +37,27 @@ public class PatientServiceImpl implements PatientService {
         }
         return patientDTOs;
     }
+
+    @Override
+    public void create(PatientDTO patientDTO) {
+        Patient patient = new Patient();
+        patient.setName(patientDTO.getName());
+        patient.setAddress(patientDTO.getAddress());
+        patient.setSex(patientDTO.getSex());
+        patient.setBirthDate(patientDTO.getBirthDate());
+        patient.setCnp(patientDTO.getCnp());
+        patient.setSeriesAndNumber(patientDTO.getSeriesAndNumber());
+        patient.setStatusOfInsured(patientDTO.getStatusOfInsured());
+        patient.setTypeOfAdmission(patientDTO.getTypeOfAdmission());
+        patient.setTypeOfInsurance(patientDTO.getTypeOfInsurance());
+
+        patientRepository.save(patient);
+
+    }
+
+    @Override
+    public Patient update(Long id, PatientDTO patientDTO) {
+        return null;
+    }
+
 }
