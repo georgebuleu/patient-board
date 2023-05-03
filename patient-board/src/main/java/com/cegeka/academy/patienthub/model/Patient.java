@@ -12,37 +12,66 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientID;
+
     @Column
     @Nonnull
     private String name;
+
     @Column
     private String phone;
+
     @Column
     private String sex;
+
     @Column
     private String birthDate;
+
     @Column
     private String address;
+
     @Column
     @Nonnull
-    private Integer cnp;
+    private String cnp;
+
     @Column
     @Nonnull
     private String seriesAndNumber;
+
+    @Column
+    @Nonnull
+    @Enumerated(EnumType.STRING)
+    private TypeOfInsurance typeOfInsurance;
+
+    @Column
+    @Nonnull
+    @Enumerated(EnumType.STRING)
+    private StatusOfInsured statusOfInsured;
+
+    @Column
+    @Nonnull
+    @Enumerated(EnumType.STRING)
+    private TypeOfAdmission typeOfAdmission;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomID")
     private Room room;
+
     @OneToOne
     @JoinColumn(name = "medicalHistory_id")
     MedicalHistory medicalHistory;
+
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diagnosis> diagnosis;
+
     @OneToMany(mappedBy = "patient")
     private List<Surgery> surgeries;
+
     public Patient() {
     }
 
-    public Patient(Long patientID, String name, String phone, String sex, String birthDate, String address, Integer cnp, String seriesAndNumber, Room room, MedicalHistory medicalHistory, List<Diagnosis> diagnosis) {
+    public Patient(Long patientID, String name, String phone, String sex, String birthDate, String address, String cnp,
+                   String seriesAndNumber, Room room, MedicalHistory medicalHistory, List<Diagnosis> diagnosis,
+                   TypeOfInsurance typeOfInsurance, StatusOfInsured statusOfInsured, TypeOfAdmission typeOfAdmission) {
         this.patientID = patientID;
         this.name = name;
         this.phone = phone;
@@ -54,6 +83,9 @@ public class Patient {
         this.room = room;
         this.medicalHistory = medicalHistory;
         this.diagnosis = diagnosis;
+        this.typeOfInsurance = typeOfInsurance;
+        this.statusOfInsured = statusOfInsured;
+        this.typeOfAdmission = typeOfAdmission;
     }
 
     public Long getPatientID() {
@@ -100,11 +132,11 @@ public class Patient {
         this.address = address;
     }
 
-    public Integer getCnp() {
+    public String getCnp() {
         return cnp;
     }
 
-    public void setCnp(Integer cnp) {
+    public void setCnp(String cnp) {
         this.cnp = cnp;
     }
 
@@ -139,5 +171,29 @@ public class Patient {
 
     public void setDiagnosis(List<Diagnosis> diagnosis) {
         this.diagnosis = diagnosis;
+    }
+
+    public TypeOfInsurance getTypeOfInsurance() {
+        return typeOfInsurance;
+    }
+
+    public void setTypeOfInsurance(TypeOfInsurance typeOfInsurance) {
+        this.typeOfInsurance = typeOfInsurance;
+    }
+
+    public StatusOfInsured getStatusOfInsured() {
+        return statusOfInsured;
+    }
+
+    public void setStatusOfInsured(StatusOfInsured statusOfInsured) {
+        this.statusOfInsured = statusOfInsured;
+    }
+
+    public TypeOfAdmission getTypeOfAdmission() {
+        return typeOfAdmission;
+    }
+
+    public void setTypeOfAdmission(TypeOfAdmission typeOfAdmission) {
+        this.typeOfAdmission = typeOfAdmission;
     }
 }
