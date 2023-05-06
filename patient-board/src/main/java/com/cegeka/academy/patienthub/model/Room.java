@@ -1,6 +1,7 @@
 package com.cegeka.academy.patienthub.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name="room")
@@ -9,9 +10,19 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomID;
     private int capacity;
+    @NonNull
+    private String roomName;
     @ManyToOne
     @JoinColumn(name = "speciality_id")
     private Speciality speciality;
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
 
     public int getCapacity() {
         return capacity;

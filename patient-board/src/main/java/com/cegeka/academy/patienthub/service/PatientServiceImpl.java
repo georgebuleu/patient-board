@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.service;
 
+import com.cegeka.academy.patienthub.DTO.GetPatientByHospitalDTO;
 import com.cegeka.academy.patienthub.DTO.PatientDTO;
 import com.cegeka.academy.patienthub.exception.NotFindPatientsBySpecialtyException;
 import com.cegeka.academy.patienthub.model.Patient;
@@ -19,21 +20,21 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<PatientDTO> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId) {
+    public List<GetPatientByHospitalDTO> getAllPatientsByHospitalIdAndSpecialityId(Long hospitalId, Long specialityId) {
         List<Patient> patients = patientRepository.getAllPatientsByHospitalIdAndSpecialityId(hospitalId,specialityId);
-        List<PatientDTO> patientDTOs = new ArrayList<>();
+        List<GetPatientByHospitalDTO> patientDTOs = new ArrayList<>();
         for (Patient patient : patients) {
-            patientDTOs.add(new PatientDTO(patient.getPatientID(),patient.getName()));
+            patientDTOs.add(new GetPatientByHospitalDTO(patient.getPatientID(),patient.getName(), patient.getRoom().getRoomName()));
         }
         return patientDTOs;
     }
 
     @Override
-    public List<PatientDTO> getAllPatientsByHospitalId(Long hospitalId) {
+    public List<GetPatientByHospitalDTO> getAllPatientsByHospitalId(Long hospitalId) {
         List<Patient> patients = patientRepository.getAllPatientsByHospitalId(hospitalId);
-        List<PatientDTO> patientDTOs = new ArrayList<>();
+        List<GetPatientByHospitalDTO> patientDTOs = new ArrayList<>();
         for (Patient patient : patients) {
-            patientDTOs.add(new PatientDTO(patient.getPatientID(), patient.getName()));
+            patientDTOs.add(new GetPatientByHospitalDTO(patient.getPatientID(), patient.getName(), patient.getRoom().getRoomName()));
         }
         return patientDTOs;
     }

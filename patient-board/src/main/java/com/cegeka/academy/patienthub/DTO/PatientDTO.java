@@ -45,10 +45,6 @@ public class PatientDTO {
     public PatientDTO() {
     }
 
-    public PatientDTO(Long patientId, String name) {
-
-    }
-
     public String getName() {
         return name;
     }
