@@ -1,0 +1,5 @@
+FROM openjdk:latest as builder
+ARG JAR_FILE=patient-board-app/target/patient-board-app-1.0-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]

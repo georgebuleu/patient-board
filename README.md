@@ -8,7 +8,12 @@ Patients Board backend project for team 1
 
 ## Board
 [Trello board](https://trello.com/b/NfHY4ZKY/task-boarf).
-
+## Spring Boot container
+- Docker desktop is open
+- run dockerFile pentru a se crea imaginea
+- docker ps -a (check if the container is running)
+- docker run -d  id_imagine id_container_creat (create and start a new container from the specified image)
+  =======
 # Patient Hub - Postgres Container Setup
 
 
@@ -31,10 +36,10 @@ Patients Board backend project for team 1
     ```
 
    This command will create a container named "patient-hub-db", with a PostgreSQL user named "admin" and password "admin".
-The container's port 5432 will be mapped to port 2345 on your machine, and the container will run in detached mode with auto-restart enabled.
+   The container's port 5432 will be mapped to port 2345 on your machine, and the container will run in detached mode with auto-restart enabled.
 
 3. Check if the container is running
-    
+
     ```
     docker ps -a
     ```
@@ -45,36 +50,40 @@ The container's port 5432 will be mapped to port 2345 on your machine, and the c
     psql -h localhost -p 2345 -U admin -W postgres
     ```
 
-   This command will connect to the database running in the Docker container using the psql client you will have to enter the password which is also "admin". This is only to test if the database is running. 
+   This command will connect to the database running in the Docker container using the psql client you will have to enter the password which is also "admin". This is only to test if the database is running.
 
 Note:
-   You will need to create
-   You will have to change application.properties from
+You will need to create
+You will have to change application.properties from
    ```
    spring.datasource.url=jdbc:postgresql://localhost:5432/PacientHub
    ```
-   to 
+to
    ```
    spring.datasource.url=jdbc:postgresql://localhost:2345/PacientHub //or any port your container is mapped to.
    ```
-   
 
-   
+
+
 # Setting up PgAdmin
-   1. Right Click on Servers -> Register-> Server
+1. Right Click on Servers -> Register-> Server
    ![img_1.png](images/img_1.png)
 
-   2. Choose a name for the server
+2. Choose a name for the server
    ![img_2.png](images/img_2.png)
-   3. Set Host name to "localhost", port: 2345(the port of the container), username: admin, password: admin
+3. Set Host name to "localhost", port: 2345(the port of the container), username: admin, password: admin
    ![img_3.png](images/img_3.png)
-   4. Save
-   5. Right Click on "Databases" -> Create -> Database 
+4. Save
+5. Right Click on "Databases" -> Create -> Database
    ![img_4.png](images/img_4.png)
-   6. Choose the name(in our case the name in the application.properties, "PacientHub")
+6. Choose the name(in our case the name in the application.properties, "PacientHub")
    ![img_5.png](images/img_5.png)
-   7. Switch to security tab, Click on "+" button next to "Privileges". 
+7. Switch to security tab, Click on "+" button next to "Privileges".
    ![img_6.png](images/img_6.png)
 
-
+## Spring Boot container
+- Docker desktop is open 
+ - run dockerFile pentru a se crea imaginea
+ - docker ps -a (check if the container is running)
+ - docker run -d  id_imagine id_container_creat (create and start a new container from the specified image)
 
