@@ -1,0 +1,4 @@
+FROM openjdk:latest as builder
+ARG JAR_FILE=target/patient-board-1.0-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","target/patient-board-1.0-SNAPSHOT.jar"]
