@@ -48,4 +48,11 @@ public class HospitalStaffServiceImpl implements HospitalStaffService{
         hospitalStaffRepository.save(hospitalStaff);
     }
 
+    @Override
+    public void updatePassword(HospitalStaffDTO hospitalStaffDTO) {
+
+        hospitalStaffRepository.updatePasswordByEmail(hospitalStaffDTO.getEmail(),hospitalStaffDTO.getPassword());
+
+    }
+
 }

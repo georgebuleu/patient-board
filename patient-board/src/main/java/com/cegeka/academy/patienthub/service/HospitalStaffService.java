@@ -9,5 +9,7 @@ public interface HospitalStaffService  {
    Optional <User> getUserByEmail(String email);
 
    void register(HospitalStaffDTO hospitalStaffDTO);
+
+   public void updatePassword(HospitalStaffDTO hospitalStaffDTO);
 }
 
