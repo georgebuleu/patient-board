@@ -1,5 +1,6 @@
 package com.cegeka.academy.patienthub.controller;
 
+import com.cegeka.academy.patienthub.DTO.GetPatientByHospitalDTO;
 import com.cegeka.academy.patienthub.DTO.PatientDTO;
 import com.cegeka.academy.patienthub.service.PatientService;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +19,12 @@ public class PatientController {
     }
 
     @GetMapping("hospitals/{hospitalID}/patients")
-    public ResponseEntity<List<PatientDTO>> getAllPatientsByHospitalId(@PathVariable("hospitalID") Long hospitalID) {
+    public ResponseEntity<List<GetPatientByHospitalDTO>> getAllPatientsByHospitalId(@PathVariable("hospitalID") Long hospitalID) {
         return ResponseEntity.ok().body(patientService.getAllPatientsByHospitalId(hospitalID));
     }
 
     @GetMapping("hospitals/{hospitalID}/specialities/{specialityID}/patients")
-    public ResponseEntity<List<PatientDTO>> getAllPatientsByHospitalIdAndSpecialityId(@PathVariable("hospitalID") Long hospitalID, @PathVariable("specialityID") Long specialityID) {
+    public ResponseEntity<List<GetPatientByHospitalDTO>> getAllPatientsByHospitalIdAndSpecialityId(@PathVariable("hospitalID") Long hospitalID, @PathVariable("specialityID") Long specialityID) {
         return ResponseEntity.ok().body(patientService.getAllPatientsByHospitalIdAndSpecialityId(hospitalID, specialityID));
     }
 
