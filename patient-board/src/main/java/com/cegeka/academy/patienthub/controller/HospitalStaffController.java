@@ -3,10 +3,7 @@ package com.cegeka.academy.patienthub.controller;
 import com.cegeka.academy.patienthub.DTO.HospitalStaffDTO;
 import com.cegeka.academy.patienthub.service.HospitalStaffService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hospitalStaff")
@@ -21,6 +18,13 @@ public class HospitalStaffController {
     public ResponseEntity<Void> register(@RequestBody HospitalStaffDTO hospitalStaffDTO) {
         hospitalStaffService.register(hospitalStaffDTO);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<Void> resetPassword(@RequestBody HospitalStaffDTO hospitalStaffDTO){
+        hospitalStaffService.updatePassword(hospitalStaffDTO);
+        return ResponseEntity.ok().build();
+
     }
 
 }
