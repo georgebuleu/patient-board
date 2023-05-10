@@ -1,12 +1,16 @@
 package com.cegeka.academy.patienthub.service;
 
+import com.cegeka.academy.patienthub.DTO.GetPatientByHospitalDTO;
 import com.cegeka.academy.patienthub.DTO.TreatmentDTO;
 import com.cegeka.academy.patienthub.model.Diagnosis;
+import com.cegeka.academy.patienthub.model.Patient;
 import com.cegeka.academy.patienthub.model.Treatment;
 import com.cegeka.academy.patienthub.repository.DiagnosisRepository;
 import com.cegeka.academy.patienthub.repository.TreatmentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +23,18 @@ public class TreatmentServiceImpl implements TreatmentService {
         this.diagnosisRepository = diagnosisRepository;
     }
 
+
+    @Override
+    public List<TreatmentDTO> getAllTreatments(Long patientId) {
+        List<Treatment> treatments = treatmentRepository.getAllTreatments(patientId);
+        List<TreatmentDTO> treatmentDTOS = new ArrayList<>();
+        for (Treatment treatment : treatments) {
+            treatmentDTOS.add(new TreatmentDTO
+                                (treatment.getTreatmentId(),treatment.getTreatment(),treatment.getEvolution()
+                                ,treatment.getFromDate(),treatment.getToDate(),treatment.getDiagnosis().getId()));
+        }
+        return treatmentDTOS;
+    }
 
     @Override
     public void create(TreatmentDTO treatmentDTO) {
