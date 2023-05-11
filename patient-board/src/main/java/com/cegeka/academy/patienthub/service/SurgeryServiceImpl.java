@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SurgeryServiceImpl implements SurgeryService{
-
     private final SurgeryRepository surgeryRepository;
     private final PatientRepository patientRepository;
 
@@ -39,9 +38,9 @@ public class SurgeryServiceImpl implements SurgeryService{
     public void editSurgery(Surgery surgery, Long patientId) {
         Surgery currentSurgery = surgeryRepository.findByPatientId(patientId)
                         .orElseThrow(() -> new SurgeryException("There are no surgeries for this patient"));
-
         currentSurgery.setDate(surgery.getDate());
         currentSurgery.setDetails(surgery.getDetails());
+        currentSurgery.setAdditionalStaff(surgery.getAdditionalStaff());
         surgeryRepository.save(currentSurgery);
     }
 }

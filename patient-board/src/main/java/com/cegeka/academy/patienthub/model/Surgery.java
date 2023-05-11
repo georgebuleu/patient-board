@@ -12,6 +12,7 @@ public class Surgery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String details;
+    private String additionalStaff;
     @Nonnull
     private Date date;
     @ManyToMany(mappedBy = "surgeries", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
@@ -43,6 +44,14 @@ public class Surgery {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public String getAdditionalStaff() {
+        return additionalStaff;
+    }
+
+    public void setAdditionalStaff(String additionalStaff) {
+        this.additionalStaff = additionalStaff;
     }
 
     public Date getDate() {
