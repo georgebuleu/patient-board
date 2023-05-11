@@ -8,6 +8,33 @@ Patients Board backend project for team 1
 
 ## Board
 [Trello board](https://trello.com/b/NfHY4ZKY/task-boarf).
+
+##Start Docker container with app and db running
+Docker installed on your machine.
+
+**1. Build docker image for the SpringBoot service**
+ ```
+ mvn clean install
+ 
+ docker build -t app .  
+ ```
+**2. Run docker containers for service and db**
+ ```
+ docker-compose up -d
+ ```
+**3. Check if the containers are running**
+ ```
+ docker-compose ps
+ ```
+**4. Connect to the database in the container using the psql client (password is "admin"):
+ ```
+ docker exec -t <CONTAINER_ID> psql -U admin -W postgres
+ ```
+**5. To stop the containers run:
+ ```
+ docker-compose down
+ ```
+
 ## Spring Boot container
 - Docker desktop is open
 - run dockerFile pentru a se crea imaginea
