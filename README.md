@@ -2,27 +2,27 @@
 PatientBoard Backend API is a Java-based backend system meticulously crafted to empower doctors and medical staff in hospitals. 
 It facilitates seamless access to vital patient information based on room numbers, treatment, surgeries, medical history, involved medical staff, and insurance details.
 
-# 1. Database Schema Design:
+## 1. Database Schema Design:
 Schema Blueprint: We began by meticulously designing the database schema, outlining tables, fields, and their relationships.
 Normalization: Ensured data integrity through proper normalization, minimizing redundancy and improving query performance.
 Foreign Key Constraints: Implemented foreign key constraints to maintain referential integrity.
 
-# 2. Entity Mapping with Hibernate:
+## 2. Entity Mapping with Hibernate:
 Entity Classes: We created Java entity classes to represent database tables, utilizing Hibernate annotations.
 Mapping Configurations: Developed mapping configurations for each entity to define how they correlate with database tables.
 Optimized Queries: Leveraged Hibernate's capabilities for efficient database querying.
 
-# 3. Controller Development:
+## 3. Controller Development:
 RESTful API Endpoints: Built RESTful controllers to expose API endpoints for data retrieval and manipulation.
 Request-Response Handling: Implemented request and response handling logic, ensuring data integrity and validation.
 Pagination and Filtering: Added features like pagination and data filtering for improved usability.
 
-# 4. Session-Based Authentication:
+## 4. Session-Based Authentication:
 Interceptor Implementation: Developed a custom interceptor to handle session-based authentication.
 Security Layers: Ensured multiple security layers, including session validation and access control.
 Token Management: Managed user sessions and tokens securely.
 
-# 5. Dockerization:
+## 5. Dockerization:
 Database Docker Container: 
 Created a Docker container for the PostgreSQL database, enabling easy portability and consistency.
 Backend Docker Container: Dockerized the backend API for simplified deployment and scaling.
