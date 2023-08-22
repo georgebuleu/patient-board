@@ -1,16 +1,41 @@
-# be-patients-board-1
-Patients Board backend project for team 1
+# PACIENT BOARD
 
+How We Built the PatientBoard Backend API
 
-## Figma
-[Figma invite](https://www.figma.com/team_invite/redeem/0frX58c9uYY5SZt6QjH26V).  
-[Figma app](https://www.figma.com/files/project/85287217/Team-project?fuid=1227273931196471268).  
+So, here's the scoop on how we put together the PatientBoard Backend API. We got all techy and used some cool stuff to make it happen.
 
-## Board
-[Trello board](https://trello.com/b/NfHY4ZKY/task-boarf).
+Database Setup: First things first, we had to figure out how to store all that patient info. We designed a database schema
+that was organized and didn't have any extra junk in it. Plus, we made sure everything was connected properly using foreign
+keys to keep the data in line.
 
-##Start Docker container with app and db running
+Hibernate Magic: We used this fancy thing called Hibernate to talk to our database. It's like a bridge between Java and the database.
+Our Java classes became buddies with the database tables, thanks to all those Hibernate annotations. This made it easy to fetch data and
+send it where it needed to go.
+
+Dealing with Errors: Let's face it, stuff can go wrong. So, we created some special error messages for when things didn't go as planned. 
+These errors were like little notes that told us what went wrong and where. This way, we could fix things faster.
+
+DTOs for Smooth Data Moves: To get data back and forth between the front-end and the back-end, we introduced something called
+Data Transfer Objects (DTOs). These acted like messengers, carrying data between different parts of our app. We even made
+sure the data was clean and legit before it traveled.
+
+Spring Data JPA for Smart Queries: Spring Data JPA was our go-to for talking to the database. We made these fancy interfaces that
+knew how to ask the database for the right info just by their method names. This saved us a lot of time and made our code easy to understand.
+
+Three-Tier Architecture: Our app had different parts, and we organized them neatly. The controllers handled requests and
+decided what to do with them. The services were like the brain, where all the smart decisions happened. And the repositories
+were the database whisperers that knew how to talk to the database.
+
+Docker Magic: Lastly, we needed to make sure our app could run anywhere without a hassle. So, we put everything in these
+containers called Docker. The database and our app each had their own container. And with Docker Compose, we could start
+them all together without any fuss.
+
+So, that's how we built the PatientBoard Backend API - a mix of techy tools, some smart organization, and a little bit of 
+magic to make it all work.
+
+## Start Docker container with app and db running
 Docker installed on your machine.
+
 
 **1. Build docker image for the SpringBoot service**
  ```
@@ -35,12 +60,6 @@ Docker installed on your machine.
  docker-compose down
  ```
 
-## Spring Boot container
-- Docker desktop is open
-- run dockerFile pentru a se crea imaginea
-- docker ps -a (check if the container is running)
-- docker run -d  id_imagine id_container_creat (create and start a new container from the specified image)
-  =======
 # Patient Hub - Postgres Container Setup
 
 
@@ -89,24 +108,6 @@ to
    ```
    spring.datasource.url=jdbc:postgresql://localhost:2345/PacientHub //or any port your container is mapped to.
    ```
-
-
-
-# Setting up PgAdmin
-1. Right Click on Servers -> Register-> Server
-   ![img_1.png](images/img_1.png)
-
-2. Choose a name for the server
-   ![img_2.png](images/img_2.png)
-3. Set Host name to "localhost", port: 2345(the port of the container), username: admin, password: admin
-   ![img_3.png](images/img_3.png)
-4. Save
-5. Right Click on "Databases" -> Create -> Database
-   ![img_4.png](images/img_4.png)
-6. Choose the name(in our case the name in the application.properties, "PacientHub")
-   ![img_5.png](images/img_5.png)
-7. Switch to security tab, Click on "+" button next to "Privileges".
-   ![img_6.png](images/img_6.png)
 
 ## Spring Boot container
 - Docker desktop is open 
