@@ -1,13 +1,30 @@
-# be-patients-board-1
-Patients Board backend project for team 1
+# PatientBoard Description
+PatientBoard Backend API is a Java-based backend system meticulously crafted to empower doctors and medical staff in hospitals. 
+It facilitates seamless access to vital patient information based on room numbers, treatment, surgeries, medical history, involved medical staff, and insurance details.
 
+#1. Database Schema Design:
+Schema Blueprint: We began by meticulously designing the database schema, outlining tables, fields, and their relationships.
+Normalization: Ensured data integrity through proper normalization, minimizing redundancy and improving query performance.
+Foreign Key Constraints: Implemented foreign key constraints to maintain referential integrity.
 
-## Figma
-[Figma invite](https://www.figma.com/team_invite/redeem/0frX58c9uYY5SZt6QjH26V).  
-[Figma app](https://www.figma.com/files/project/85287217/Team-project?fuid=1227273931196471268).  
+#2. Entity Mapping with Hibernate:
+Entity Classes: We created Java entity classes to represent database tables, utilizing Hibernate annotations.
+Mapping Configurations: Developed mapping configurations for each entity to define how they correlate with database tables.
+Optimized Queries: Leveraged Hibernate's capabilities for efficient database querying.
 
-## Board
-[Trello board](https://trello.com/b/NfHY4ZKY/task-boarf).
+#3. Controller Development:
+RESTful API Endpoints: Built RESTful controllers to expose API endpoints for data retrieval and manipulation.
+Request-Response Handling: Implemented request and response handling logic, ensuring data integrity and validation.
+Pagination and Filtering: Added features like pagination and data filtering for improved usability.
+#4. Session-Based Authentication:
+Interceptor Implementation: Developed a custom interceptor to handle session-based authentication.
+Security Layers: Ensured multiple security layers, including session validation and access control.
+Token Management: Managed user sessions and tokens securely.
+
+#5. Dockerization:
+Database Docker Container: Created a Docker container for the PostgreSQL database, enabling easy portability and consistency.
+Backend Docker Container: Dockerized the backend API for simplified deployment and scaling.
+Docker Compose: Orchestrated the entire environment using Docker Compose, including database initialization and backend service setup.
 
 ##Start Docker container with app and db running
 Docker installed on your machine.
@@ -87,26 +104,8 @@ You will have to change application.properties from
    ```
 to
    ```
-   spring.datasource.url=jdbc:postgresql://localhost:2345/PacientHub //or any port your container is mapped to.
+   spring.datasource.url=jdbc:postgresql://localhost:2345/PacientHub //op the port your container is mapped to.
    ```
-
-
-
-# Setting up PgAdmin
-1. Right Click on Servers -> Register-> Server
-   ![img_1.png](images/img_1.png)
-
-2. Choose a name for the server
-   ![img_2.png](images/img_2.png)
-3. Set Host name to "localhost", port: 2345(the port of the container), username: admin, password: admin
-   ![img_3.png](images/img_3.png)
-4. Save
-5. Right Click on "Databases" -> Create -> Database
-   ![img_4.png](images/img_4.png)
-6. Choose the name(in our case the name in the application.properties, "PacientHub")
-   ![img_5.png](images/img_5.png)
-7. Switch to security tab, Click on "+" button next to "Privileges".
-   ![img_6.png](images/img_6.png)
 
 ## Spring Boot container
 - Docker desktop is open 
